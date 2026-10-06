@@ -343,8 +343,10 @@ struct regmap *devm_regmap_init(struct udevice *dev,
 					   config->r_size, mapp);
 	else
 		rc = regmap_init_mem(dev_ofnode(dev), mapp);
-	if (rc)
+	if (rc) {
+		devres_free(mapp);
 		return ERR_PTR(rc);
+	}
 
 	map = *mapp;
 	if (config) {

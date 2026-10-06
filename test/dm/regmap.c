@@ -322,6 +322,24 @@ static int dm_test_devm_regmap(struct unit_test_state *uts)
 }
 DM_TEST(dm_test_devm_regmap, UTF_SCAN_PDATA | UTF_SCAN_FDT);
 
+/* Check that a failing devm_regmap_init() does not leak memory */
+static int dm_test_devm_regmap_fail(struct unit_test_state *uts)
+{
+	struct udevice *dev;
+	ulong start;
+
+	/* The thermal node has no 'reg' property */
+	ut_assertok(uclass_first_device_err(UCLASS_THERMAL, &dev));
+
+	start = ut_check_delta(0);
+	ut_asserteq_ptr(ERR_PTR(-EINVAL),
+			devm_regmap_init(dev, NULL, NULL, NULL));
+	ut_asserteq(0, ut_check_delta(start));
+
+	return 0;
+}
+DM_TEST(dm_test_devm_regmap_fail, UTF_SCAN_FDT);
+
 static int test_one_field(struct unit_test_state *uts,
 			  struct regmap *regmap,
 			  struct regmap_field *field,
