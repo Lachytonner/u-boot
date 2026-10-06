@@ -1250,8 +1250,10 @@ static int fit_handle_file(struct image_tool_params *params)
 	 * total, until we succeed.
 	 */
 	size_inc = fit_estimate_hash_sig_size(params, bakfile);
-	if (size_inc < 0)
+	if (size_inc < 0) {
+		ret = size_inc;
 		goto err_system;
+	}
 	do {
 		if (copyfile(bakfile, tmpfile) < 0) {
 			printf("Can't copy %s to %s\n", bakfile, tmpfile);
