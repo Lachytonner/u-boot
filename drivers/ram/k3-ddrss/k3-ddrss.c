@@ -1049,7 +1049,7 @@ __maybe_unused static int k3_msmc_calculate_r0_regions(struct k3_msmc *msmc)
 	struct k3_ddrss_ecc_region *range = NULL;
 	struct k3_ddrss_ecc_region R[num_ddr];
 
-	range = kzalloc(sizeof(range), GFP_KERNEL);
+	range = kzalloc(sizeof(*range), GFP_KERNEL);
 	if (!range) {
 		ret = -ENOMEM;
 		return ret;
@@ -1062,7 +1062,7 @@ __maybe_unused static int k3_msmc_calculate_r0_regions(struct k3_msmc *msmc)
 		goto range_err;
 	}
 
-	memset(R, 0, num_ddr);
+	memset(R, 0, sizeof(R));
 
 	/* Find the first controller in the range */
 	n1 = ((range->start / gran) % num_ddr);
