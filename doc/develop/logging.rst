@@ -190,7 +190,9 @@ Filters can be based on several criteria:
 * in a set of files
 
 If no filters are attached to a driver then a default filter is used, which
-limits output to records with a level less than CONFIG_MAX_LOG_LEVEL.
+limits output to records with a level less than or equal to the default log
+level. This is initially CONFIG_LOG_DEFAULT_LEVEL and can be changed with the
+'log level' command.
 
 Log command
 -----------
