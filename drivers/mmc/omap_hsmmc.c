@@ -336,6 +336,7 @@ static void omap_hsmmc_io_recalibrate(struct mmc *mmc)
 		break;
 	case MMC_DDR_52:
 		pinctrl_state = priv->ddr_1_8v_pinctrl_state;
+		break;
 	default:
 		pinctrl_state = priv->default_pinctrl_state;
 		break;
