@@ -200,10 +200,10 @@ static const struct option longopts[] = {
 	{ "verbose", no_argument, NULL, 'v' },
 	{ "version", no_argument, NULL, 'V' },
 	{ "xip", no_argument, NULL, 'x' },
-	{ "tfa-bl31-file", no_argument, NULL, 'y' },
-	{ "tfa-bl31-addr", no_argument, NULL, 'Y' },
-	{ "tee-file", no_argument, NULL, 'z' },
-	{ "tee-addr", no_argument, NULL, 'Z' },
+	{ "tfa-bl31-file", required_argument, NULL, 'y' },
+	{ "tfa-bl31-addr", required_argument, NULL, 'Y' },
+	{ "tee-file", required_argument, NULL, 'z' },
+	{ "tee-addr", required_argument, NULL, 'Z' },
 	{ /* sentinel */ },
 };
 
