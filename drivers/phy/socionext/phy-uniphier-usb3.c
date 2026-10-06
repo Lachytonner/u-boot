@@ -69,9 +69,9 @@ static int uniphier_usb3phy_probe(struct udevice *dev)
 	}
 
 	priv->clk_phy = devm_clk_get(dev, "phy");
-	if (IS_ERR(priv->clk_link)) {
+	if (IS_ERR(priv->clk_phy)) {
 		printf("Failed to get phy clock\n");
-		return PTR_ERR(priv->clk_link);
+		return PTR_ERR(priv->clk_phy);
 	}
 
 	priv->clk_parent = devm_clk_get_optional(dev, "gio");
