@@ -112,6 +112,7 @@ static int ubi_list(const char *var, int numeric)
 	str = malloc(size);
 	if (!str)
 		return 1;
+	str[0] = '\0';
 
 	for (i = 0; i < (ubi->vtbl_slots + 1); i++) {
 		if (!ubi->volumes[i])
@@ -138,7 +139,7 @@ static int ubi_list(const char *var, int numeric)
 			str[len++] = ' ';
 
 		if (numeric) {
-			len += sprintf(str + len, "%d", ubi->volumes[i]->vol_id) + 1;
+			len += sprintf(str + len, "%d", ubi->volumes[i]->vol_id);
 		} else {
 			memcpy(str + len, ubi->volumes[i]->name, namelen);
 			len += namelen;
