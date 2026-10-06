@@ -95,7 +95,7 @@ MMC1, MMC2, MMC2_2
 
     To load from a file system use:
 
-    * CONFIG_SPL_FS_FAT=y or CONFIG_SPL_FS_EXT=y
+    * CONFIG_SPL_FS_FAT=y or CONFIG_SPL_FS_EXT4=y
 
     * CONFIG_SPL_FS_LOAD_PAYLOAD_NAME="<filepath>"
 
@@ -117,7 +117,7 @@ NVMe
 
     To load from a file system use:
 
-    * CONFIG_SPL_FS_FAT=y or CONFIG_SPL_FS_EXT=y
+    * CONFIG_SPL_FS_FAT=y or CONFIG_SPL_FS_EXT4=y
 
     * CONFIG_SPL_FS_LOAD_PAYLOAD_NAME="<filepath>"
 
@@ -125,7 +125,7 @@ SATA
     This method reads an image from a SATA drive.
     Required configuration settings include:
 
-    * CONFIG_SPL_SATA=y or CONFIG_TPL_SATA=y
+    * CONFIG_SPL_SATA=y
 
     To use a PCIe connecte SATA controller you additionally need:
 
@@ -169,7 +169,7 @@ USB
 
     To load from a file system use:
 
-    * CONFIG_SPL_FS_FAT=y or CONFIG_SPL_FS_EXT=y
+    * CONFIG_SPL_FS_FAT=y or CONFIG_SPL_FS_EXT4=y
 
     * CONFIG_SYS_USB_FAT_BOOT_PARTITION=<partition number>
 
@@ -189,7 +189,7 @@ NAND
     For using UBI (Unsorted Block Images) volumes to read from NAND the
     following configuration settings are required:
 
-    * CONFIG_SPL_UBI=y or CONFIG_TPL_UBI=y
+    * CONFIG_SPL_UBI=y
 
     The UBI volume to read can either be specified
 
@@ -201,18 +201,18 @@ NOR
     This method loads the image from NOR flash.
     Required configuration settings include:
 
-    * CONFIG_SPL_NOR_SUPPORT=y or CONFIG_TPL_NOR_SUPPORT=y
+    * CONFIG_SPL_NOR_SUPPORT=y
 
 OneNAND
     This methods loads the image from a OneNAND device. To read from raw OneNAND
     the following configuration settings are required:
 
-    * CONFIG_SPL_ONENAND_SUPPORT=y or CONFIG_TPL_ONENAND_SUPPORT=y
+    * CONFIG_SPL_ONENAND_SUPPORT=y
 
     For using the Ubi file system to read from NAND the following configuration
     settings are required:
 
-    * CONFIG_SPL_UBI=y or CONFIG_TPL_UBI=y
+    * CONFIG_SPL_UBI=y
 
 SPI
     This method loads an image form SPI NOR flash.
@@ -220,9 +220,9 @@ SPI
 
     * CONFIG_SPL_DM_SPI=y
 
-    * CONFIG_SPL_SPI_FLASH=y
+    * CONFIG_SPL_SPI_FLASH_SUPPORT=y
 
-    * CONFIG_SPI_LOAD=y or CONFIG_TPL_SPI_LOAD=y
+    * CONFIG_SPL_SPI_LOAD=y or CONFIG_TPL_SPI_LOAD=y
 
 
 Sunxi SPI
@@ -246,7 +246,7 @@ DFU
 
     * CONFIG_DFU=y
 
-    * CONFIG_SPL_RAM_SUPPORT=y or CONFIG TPL_RAM_SUPPORT=y
+    * CONFIG_SPL_RAM_SUPPORT=y or CONFIG_TPL_RAM_SUPPORT=y
 
 Ethernet
     This method loads an image over Ethernet. The BOOTP protocol is used to find
@@ -255,7 +255,7 @@ Ethernet
 
     * CONFIG_SPL_NET=y
 
-    * CONFIG_SPL_ETH_DEVICE=y or CONFIG_DM_USB_GADGET=y
+    * CONFIG_SPL_ETH=y or CONFIG_SPL_USB_ETHER=y
 
 FEL
     This method does not actually load an image for U-Boot.
@@ -268,7 +268,7 @@ RAM
 
     * CONFIG_SPL_RAM_SUPPORT=y or CONFIG_TPL_RAM_SUPPORT=y
 
-    * CONFIG_RAM_DEVICE=y
+    * CONFIG_SPL_RAM_DEVICE=y or CONFIG_TPL_RAM_DEVICE=y
 
 Sandbox file
     On the sandbox this method loads an image from the host file system.
@@ -301,7 +301,7 @@ USB SDP
 
     * CONFIG_SPL_SERIAL=y
 
-    * CONFIG_SPL_USB_SDP_SUPPORT=y or CONFIG_TPL_USB_SDP_SUPPORT
+    * CONFIG_SPL_USB_SDP_SUPPORT=y
 
 VBE Simple
     This method is used by the VPL stage to extract the next stage image from
