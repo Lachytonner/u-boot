@@ -120,7 +120,7 @@ static void parse_common_args(int argc, char *argv[])
 	env_opts.config_file = CONFIG_FILE;
 #endif
 
-	while ((c = getopt_long(argc, argv, ":a:c:l:h:v", long_options, NULL)) !=
+	while ((c = getopt_long(argc, argv, ":a:c:l:hv", long_options, NULL)) !=
 	       EOF) {
 		switch (c) {
 #ifdef CONFIG_FILE
@@ -156,7 +156,7 @@ int parse_printenv_args(int argc, char *argv[])
 
 	parse_common_args(argc, argv);
 
-	while ((c = getopt_long(argc, argv, "a:c:ns:l:h:v", long_options, NULL))
+	while ((c = getopt_long(argc, argv, "a:c:ns:l:hv", long_options, NULL))
 		!= EOF) {
 		switch (c) {
 		case 'n':
@@ -183,7 +183,7 @@ int parse_setenv_args(int argc, char *argv[])
 
 	parse_common_args(argc, argv);
 
-	while ((c = getopt_long(argc, argv, "a:c:ns:l:h:v", long_options, NULL))
+	while ((c = getopt_long(argc, argv, "a:c:ns:l:hv", long_options, NULL))
 		!= EOF) {
 		switch (c) {
 		case 's':
