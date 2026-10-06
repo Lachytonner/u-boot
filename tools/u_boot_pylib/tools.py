@@ -63,7 +63,7 @@ def prepare_output_dir(dirname, preserve=False):
                 os.makedirs(outdir)
             except OSError as err:
                 raise ValueError(
-                    f"Cannot make output directory 'outdir': 'err.strerror'")
+                    f"Cannot make output directory '{outdir}': '{err.strerror}'")
         tout.debug("Using output directory '%s'" % outdir)
     else:
         outdir = tempfile.mkdtemp(prefix='binman.')
