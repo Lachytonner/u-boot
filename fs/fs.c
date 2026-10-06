@@ -1185,8 +1185,10 @@ int fs_read_alloc(const char *fname, ulong size, uint align, void **bufp)
 		free(buf);
 		return log_msg_ret("read", ret);
 	}
-	if (size != bytes_read)
+	if (size != bytes_read) {
+		free(buf);
 		return log_msg_ret("bread", -EIO);
+	}
 	buf[size] = '\0';
 
 	*bufp = buf;
